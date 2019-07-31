@@ -8,5 +8,6 @@ A collection of simple Bash scripts.
 ## System Administration
 
 ## Math
+1. [birthday_cal.sh](birthday_cal.sh): calculate & countdown your birthday 
 
 ## Text Process
