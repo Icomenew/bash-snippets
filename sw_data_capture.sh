@@ -21,16 +21,18 @@ help_info() {
 cp_package(){
     for i in APL CFL KBL SKL ICL ; do
         mkdir ./$i/$driver_build
-        cp $gta_pac_path${i}_GTAX-*-FM_task_logs*.zip ./$i/$driver_build
+        # cp $gta_pac_path${i}_GTAX-*-FM_task_logs*.zip ./$i/$driver_build
+        mv $gta_pac_path${i}_GTAX-*-FM_task_logs*.zip ./$i/$driver_build
     done
 }
 
 # unzip perf sw overhead data csv file from GTA download. (SW_CASE_ID_perf_summary.csv)
 get_sw_csv(){
     for i in APL CFL KBL SKL ICL ; do
-        unzip ./$i/$driver_build/*.zip -d ./$i/$driver_build/temp && \
-        cp ./$i/$driver_build/temp/*/logs/SW_*perf_summary.csv ./$i/$driver_build && \
-        rm -rf ./$i/$driver_build/temp
+        # unzip ./$i/$driver_build/*.zip -d ./$i/$driver_build/temp && \
+        # cp ./$i/$driver_build/temp/*/logs/SW_*perf_summary.csv ./$i/$driver_build && \
+        # rm -rf ./$i/$driver_build/temp
+        unzip -j ./$i/$driver_build/*.zip *test_media_lucas*/logs/SW_*perf_summary.csv -d ./$i/$driver_build/  # -j 不处理压缩文件中原有的目录路径
     done
 
 }
