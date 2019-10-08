@@ -71,6 +71,7 @@ done
 
 # mian funcation
 if [ $# -gt -0 ]; then
+	mkdir APL CFL KBL SKL ICL
     cp_package
 	get_sw_csv
     capture_sw_data
