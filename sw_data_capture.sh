@@ -71,7 +71,18 @@ done
 
 # mian funcation
 if [ $# -gt -0 ]; then
-	mkdir APL CFL KBL SKL ICL
+	if [ ! -d APL ]; then
+    mkdir APL
+	elif [ ! -d CFL ]; then
+	mkdir CFL
+	elif [ ! -d KBL ]; then
+	mkdir KBL
+	elif [ ! -d SKL ]; then
+	mkdir SKL
+	elif [ ! -d ICL ]; then
+	mkdir ICL
+	else echo "Folder exist."
+	fi
     cp_package
 	get_sw_csv
     capture_sw_data
