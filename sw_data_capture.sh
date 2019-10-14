@@ -39,8 +39,8 @@ get_sw_csv(){
 
 capture_sw_data(){
     for i in APL CFL KBL SKL ICL ; do
-        cat ./$i/$driver_build/SW_*.csv | awk -F ',' '{print $1 "," $3}' | sed -e '/Summary/d;/CPU Latency Tag/d' > ./$i/$driver_build/temp.csv
-        sed -i '1i CPU Latency Tag,Average (ms)' ./$i/$driver_build/temp.csv
+        cat ./$i/$driver_build/SW_*.csv | awk -F ',' '{print $1 "," $3}' | sed -e '/Summary/d;/CPU Latency Tag/d' > ./temp/${driver_build}_${i}_temp.csv
+        sed -i '1i CPU Latency Tag,Average (ms)' ./temp/${driver_build}_${i}_temp.csv
     done
 }
 
@@ -89,10 +89,15 @@ chk_folder(){
 	mkdir SKL
 	else echo "Folder SKL exist."
 	fi
-	
+
 	if [ ! -d ICL ]; then
 	mkdir ICL
 	else echo "Folder ICL exist."
+	fi
+
+	if [ ! -d temp ]; then
+	mkdir temp
+	else echo "Folder temp exist."
 	fi
 }
 
