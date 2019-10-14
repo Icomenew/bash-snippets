@@ -69,20 +69,36 @@ while getopts "t:i:o:h" arg; do
 	esac
 done
 
-# mian funcation
-if [ $# -gt -0 ]; then
+chk_folder(){
 	if [ ! -d APL ]; then
     mkdir APL
-	elif [ ! -d CFL ]; then
-	mkdir CFL
-	elif [ ! -d KBL ]; then
-	mkdir KBL
-	elif [ ! -d SKL ]; then
-	mkdir SKL
-	elif [ ! -d ICL ]; then
-	mkdir ICL
-	else echo "Folder exist."
+	else echo "Folder APL exist."
 	fi
+
+	if [ ! -d CFL ]; then
+	mkdir CFL
+	else echo "Folder CFL exist."
+	fi
+
+	if [ ! -d KBL ]; then
+	mkdir KBL
+	else echo "Folder KBL exist."
+	fi
+
+	if [ ! -d SKL ]; then
+	mkdir SKL
+	else echo "Folder SKL exist."
+	fi
+	
+	if [ ! -d ICL ]; then
+	mkdir ICL
+	else echo "Folder ICL exist."
+	fi
+}
+
+# mian funcation
+if [ $# -gt -0 ]; then
+	chk_folder
     cp_package
 	get_sw_csv
     capture_sw_data
