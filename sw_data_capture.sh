@@ -41,6 +41,7 @@ capture_sw_data(){
     for i in APL CFL KBL SKL ICL ; do
         cat ./$i/$driver_build/SW_*.csv | awk -F ',' '{print $1 "," $3}' | sed -e '/Summary/d;/CPU Latency Tag/d' > ./temp/${driver_build}_${i}_temp.csv
         sed -i '1i CPU Latency Tag,Average (ms)' ./temp/${driver_build}_${i}_temp.csv
+        sed -i "1i CI Biuld,${driver_build}" ./temp/${driver_build}_${i}_temp.csv
     done
 }
 
